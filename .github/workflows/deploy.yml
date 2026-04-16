@@ -1,22 +1,21 @@
 name: Build and Test Netwatch 
 
 on:
- push:
-  branches: [main]
+  push:
+    branches: [main]
 
 jobs:
- build:
-  runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-  steps:
-    -name: Checkout code 
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    -name: Build Docker image
-    run: docker build -t netwatch:latest .
+      - name: Build Docker image
+        run: docker build -t netwatch:latest .
 
-    -name: Run monitor script test
-    run: |
-     docker run --rm netwatch:latest bash -c \
-     "./monitor.sh && echo 'Build successful!'"
-
+      - name: Run monitor script test
+        run: |
+          docker run --rm netwatch:latest bash -c \
+          "./monitor.sh && echo 'Build successful!'"
