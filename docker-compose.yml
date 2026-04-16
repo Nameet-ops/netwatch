@@ -1,0 +1,8 @@
+version: "3"
+services:
+  netwatch:
+    build: .
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config
+      
